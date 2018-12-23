@@ -16,6 +16,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
 
     this.unifiedNotifications.token.subscribe(x => console.log(x));
+    this.unifiedNotifications.currentMessage.subscribe(x => console.log(x));
   }
   request() {
     this.unifiedNotifications.updatePermission();

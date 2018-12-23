@@ -17,6 +17,8 @@ import { Dialogs } from '@ionic-native/dialogs/ngx';
 
 // import { PeyUnifiedNotificationsModule } from 'pey-unified-notifications';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const config = {
   apiKey: "AIzaSyAYIZxcD0t_qMvf9Ir5AhUkdNneGNj1t2U",
@@ -39,6 +41,7 @@ const config = {
     AngularFirestoreModule,
     // AngularFireMessaging,
     AngularFireMessagingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     // PeyUnifiedNotificationsModule
     // .initialize('test')
   ],

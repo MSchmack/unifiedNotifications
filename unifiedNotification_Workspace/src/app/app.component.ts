@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { UnifiedFirebaseMessagingService } from 'projects/pey-unified-notifications/src/lib/services/notifications/unified-firebase-messaging.service';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -27,9 +28,15 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
+    updates: SwUpdate
     // private unifiedNotifications: UnifiedFirebaseMessagingService
   ) {
     this.initializeApp();
+
+    updates.available.subscribe(event => {
+      // toastr.info('Website update ready!', 'Update');
+      updates.activateUpdate().then( () => document.location.reload());
+  });
   }
 
   initializeApp() {
@@ -37,7 +44,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      
+
     });
   }
 }
