@@ -13,8 +13,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { Firebase } from '@ionic-native/firebase/ngx';
 import { Dialogs } from '@ionic-native/dialogs/ngx';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
-import { PeyUnifiedNotificationsModule } from 'pey-unified-notifications';
+// import { PeyUnifiedNotificationsModule } from 'pey-unified-notifications';
 
 const config = {
   apiKey: "AIzaSyAB3QEguBeekr_b_TQbUATQCuKeFHjMlog",
@@ -34,9 +35,8 @@ const config = {
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(config),
-    AngularFirestoreModule,
-
-    PeyUnifiedNotificationsModule
+    AngularFireMessagingModule,
+    // PeyUnifiedNotificationsModule
 
   ],
   providers: [

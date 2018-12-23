@@ -69,7 +69,10 @@ export class MobileFirebaseMessagingService implements OnDestroy {
       })
       .catch(err => console.log(err));
     this.firebase.hasPermission()
-      .then(perm => console.log('perrmmm: ' + perm))
+      .then(perm =>  {
+        console.log('permission');
+        console.log(perm);
+      })
       .catch(err => console.log(err));
   }
   hasPermission(): Promise<boolean> {

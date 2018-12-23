@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { ListPage } from './list.page';
+import { IosPushNotificationPermissiongGuard } from 'pey-unified-notifications';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { ListPage } from './list.page';
     RouterModule.forChild([
       {
         path: '',
-        component: ListPage
+        component: ListPage,
+        canActivate: [IosPushNotificationPermissiongGuard]
       }
     ])
   ],

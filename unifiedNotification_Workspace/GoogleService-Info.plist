@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>734442418094-6ah70k2phe4208ce5l3136c3a9v0dpik.apps.googleusercontent.com</string>
+	<string>95470027554-dblg8jaji32i8jum5s72e3redlpmpthm.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.734442418094-6ah70k2phe4208ce5l3136c3a9v0dpik</string>
+	<string>com.googleusercontent.apps.95470027554-dblg8jaji32i8jum5s72e3redlpmpthm</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAYJXMKEWM_ZfJJcYjt00yq2a8F5wnHcss</string>
+	<string>AIzaSyDR39uHSPN5fvg6escE8jKl2T5YCiDdTLI</string>
 	<key>GCM_SENDER_ID</key>
-	<string>734442418094</string>
+	<string>95470027554</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.bosch.effilinkinspections</string>
+	<string>com.pey.unifiednotifications</string>
 	<key>PROJECT_ID</key>
-	<string>effilinkinspection</string>
+	<string>unifiednotifications-8e613</string>
 	<key>STORAGE_BUCKET</key>
-	<string>effilinkinspection.appspot.com</string>
+	<string>unifiednotifications-8e613.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:734442418094:ios:291da8ffb2defd13</string>
+	<string>1:95470027554:ios:047bdeb6735ab526</string>
 	<key>DATABASE_URL</key>
-	<string>https://effilinkinspection.firebaseio.com</string>
+	<string>https://unifiednotifications-8e613.firebaseio.com</string>
 </dict>
 </plist>

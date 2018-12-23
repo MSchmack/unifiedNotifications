@@ -15,16 +15,16 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { Firebase } from '@ionic-native/firebase/ngx';
 import { Dialogs } from '@ionic-native/dialogs/ngx';
 
-import { PeyUnifiedNotificationsModule } from 'pey-unified-notifications';
+// import { PeyUnifiedNotificationsModule } from 'pey-unified-notifications';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
 const config = {
-  apiKey: "AIzaSyDE6LoxLcLwIpGUTkgZlEMs1jeAuCfeRjo",
-  authDomain: "notificationtest-989f5.firebaseapp.com",
-  databaseURL: "https://notificationtest-989f5.firebaseio.com",
-  projectId: "notificationtest-989f5",
-  storageBucket: "notificationtest-989f5.appspot.com",
-  messagingSenderId: "24194137745"
+  apiKey: "AIzaSyAYIZxcD0t_qMvf9Ir5AhUkdNneGNj1t2U",
+  authDomain: "unifiednotifications-8e613.firebaseapp.com",
+  databaseURL: "https://unifiednotifications-8e613.firebaseio.com",
+  projectId: "unifiednotifications-8e613",
+  storageBucket: "unifiednotifications-8e613.appspot.com",
+  messagingSenderId: "95470027554"
 }
 
 @NgModule({
@@ -39,7 +39,7 @@ const config = {
     AngularFirestoreModule,
     // AngularFireMessaging,
     AngularFireMessagingModule,
-    PeyUnifiedNotificationsModule
+    // PeyUnifiedNotificationsModule
     // .initialize('test')
   ],
   providers: [

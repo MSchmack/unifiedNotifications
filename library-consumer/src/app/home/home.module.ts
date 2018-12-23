@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
-import { PeyUnifiedNotificationsModule } from 'pey-unified-notifications';
+// import { PeyUnifiedNotificationsModule } from 'pey-unified-notifications';
 
 @NgModule({
   imports: [
@@ -18,7 +18,7 @@ import { PeyUnifiedNotificationsModule } from 'pey-unified-notifications';
         component: HomePage
       }
     ]),
-    PeyUnifiedNotificationsModule
+    // PeyUnifiedNotificationsModule
   ],
   declarations: [HomePage]
 })

@@ -1,6 +1,6 @@
 {
   "name": "pey-unified-notifications",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "homepage": "https://github.com/peyter213/unifiedNotifications#readme",
   "license" : "GPL-3.0",
   "peerDependencies": {

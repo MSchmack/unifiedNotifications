@@ -1,58 +1,27 @@
 {
   "project_info": {
-    "project_number": "734442418094",
-    "firebase_url": "https://effilinkinspection.firebaseio.com",
-    "project_id": "effilinkinspection",
-    "storage_bucket": "effilinkinspection.appspot.com"
+    "project_number": "95470027554",
+    "firebase_url": "https://unifiednotifications-8e613.firebaseio.com",
+    "project_id": "unifiednotifications-8e613",
+    "storage_bucket": "unifiednotifications-8e613.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:734442418094:android:c817b38564da6c12",
+        "mobilesdk_app_id": "1:95470027554:android:047bdeb6735ab526",
         "android_client_info": {
-          "package_name": "com.bosch.effilinkinspection"
+          "package_name": "com.pey.unifiednotifications"
         }
       },
       "oauth_client": [
         {
-          "client_id": "734442418094-nglcu3mg194fdc001k5varma03q9qd53.apps.googleusercontent.com",
+          "client_id": "95470027554-e0ovhmn0bsvu92rakmfbv5v7qbrrja5f.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBntnCDfFBeDqfx_wLdKnlrjs0e5t2_NgQ"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:734442418094:android:291da8ffb2defd13",
-        "android_client_info": {
-          "package_name": "com.bosch.effilinkinspections"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "734442418094-nglcu3mg194fdc001k5varma03q9qd53.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBntnCDfFBeDqfx_wLdKnlrjs0e5t2_NgQ"
+          "current_key": "AIzaSyAB112IzPyXqEln-rpZAk07_LHlxpTBsl8"
         }
       ],
       "services": {
