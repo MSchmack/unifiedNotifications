@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "734442418094",
+    "firebase_url": "https://effilinkinspection.firebaseio.com",
+    "project_id": "effilinkinspection",
+    "storage_bucket": "effilinkinspection.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734442418094:android:c817b38564da6c12",
+        "android_client_info": {
+          "package_name": "com.bosch.effilinkinspection"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "734442418094-nglcu3mg194fdc001k5varma03q9qd53.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBntnCDfFBeDqfx_wLdKnlrjs0e5t2_NgQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734442418094:android:291da8ffb2defd13",
+        "android_client_info": {
+          "package_name": "com.bosch.effilinkinspections"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "734442418094-nglcu3mg194fdc001k5varma03q9qd53.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBntnCDfFBeDqfx_wLdKnlrjs0e5t2_NgQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "unifiedNotification_Workspace",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

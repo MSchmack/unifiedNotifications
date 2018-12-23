@@ -1,0 +1,7 @@
+{
+  "name": "library-consumer",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

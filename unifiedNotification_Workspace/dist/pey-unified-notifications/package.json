@@ -1,0 +1,27 @@
+{
+  "name": "pey-unified-notifications",
+  "version": "1.0.0",
+  "homepage": "https://github.com/peyter213/unifiedNotifications#readme",
+  "license": "GPL-3.0",
+  "peerDependencies": {
+    "@angular/common": "^7.1.0",
+    "@angular/core": "^7.1.0",
+    "cordova-plugin-firebase": "^5.0.0-beta.22",
+    "angularfire2": "^5.1.1",
+    "@ionic-native/firebase": "^5.0.0-beta.22",
+    "firebase": "^5.7.1"
+  },
+  "main": "bundles/pey-unified-notifications.umd.js",
+  "module": "fesm5/pey-unified-notifications.js",
+  "es2015": "fesm2015/pey-unified-notifications.js",
+  "esm5": "esm5/pey-unified-notifications.js",
+  "esm2015": "esm2015/pey-unified-notifications.js",
+  "fesm5": "fesm5/pey-unified-notifications.js",
+  "fesm2015": "fesm2015/pey-unified-notifications.js",
+  "typings": "pey-unified-notifications.d.ts",
+  "metadata": "pey-unified-notifications.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

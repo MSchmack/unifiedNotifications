@@ -1,0 +1,11 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/*
+ * Public API Surface of pey-unified-notifications
+ */
+export { PeyUnifiedNotificationsService } from './lib/pey-unified-notifications.service';
+export { PeyUnifiedNotificationsComponent } from './lib/pey-unified-notifications.component';
+export { PeyUnifiedNotificationsModule } from './lib/pey-unified-notifications.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljX2FwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL3BleS11bmlmaWVkLW5vdGlmaWNhdGlvbnMvIiwic291cmNlcyI6WyJwdWJsaWNfYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7QUFJQSwrQ0FBYyx5Q0FBeUMsQ0FBQztBQUN4RCxpREFBYywyQ0FBMkMsQ0FBQztBQUMxRCw4Q0FBYyx3Q0FBd0MsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qXG4gKiBQdWJsaWMgQVBJIFN1cmZhY2Ugb2YgcGV5LXVuaWZpZWQtbm90aWZpY2F0aW9uc1xuICovXG5cbmV4cG9ydCAqIGZyb20gJy4vbGliL3BleS11bmlmaWVkLW5vdGlmaWNhdGlvbnMuc2VydmljZSc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9wZXktdW5pZmllZC1ub3RpZmljYXRpb25zLmNvbXBvbmVudCc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9wZXktdW5pZmllZC1ub3RpZmljYXRpb25zLm1vZHVsZSc7XG4iXX0=
