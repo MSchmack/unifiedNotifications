@@ -14,6 +14,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { Firebase } from '@ionic-native/firebase/ngx';
 import { Dialogs } from '@ionic-native/dialogs/ngx';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 // import { PeyUnifiedNotificationsModule } from 'pey-unified-notifications';
 
@@ -36,6 +38,7 @@ const config = {
     AppRoutingModule,
     AngularFireModule.initializeApp(config),
     AngularFireMessagingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     // PeyUnifiedNotificationsModule
 
   ],
