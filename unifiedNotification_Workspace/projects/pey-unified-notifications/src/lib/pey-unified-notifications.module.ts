@@ -15,20 +15,3 @@ import { Firebase } from '@ionic-native/firebase/ngx';
   ]
 })
 export class PeyUnifiedNotificationsModule {  }
-  //   static forRoot(config: any): ModuleWithProviders {
-  //   console.log(config); // prints:  `{key: 'foobar'}`
-  //   return {
-  //     ngModule: PeyUnifiedNotificationsModule
-  //   };
-  // }
-// export class CoreModule {
-//   static forRoot(config: Config): ModuleWithProviders {
-//     console.log(config); // prints:  `{key: 'foobar'}`
-//     return {
-//       ngModule: CoreModule,
-//       providers: [
-//         {provide: LIB_CONFIG, useValue: config} // If I hard code `useValue: {key: 'FooBar'}`, instead of using `config` it works... weird.
-//       ],
-//     };
-//   }
-// }
