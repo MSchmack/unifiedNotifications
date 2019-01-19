@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { PlatformHelperService } from './../helpers/platform-helper.service';
 import { Platform } from '@ionic/angular';
 import { WebFirebaseMessagingService } from './web-firebase-messaging.service';
-import { initDomAdapter } from '@angular/platform-browser/src/browser';
+
 
 @Injectable({
   providedIn: 'root'
