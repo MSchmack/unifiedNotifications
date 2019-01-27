@@ -27,6 +27,7 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
+    private unifiedNotifications: UnifiedFirebaseMessagingService,
     private statusBar: StatusBar,
     updates: SwUpdate
     // private unifiedNotifications: UnifiedFirebaseMessagingService
@@ -36,6 +37,7 @@ export class AppComponent {
     updates.available.subscribe(event => {
       // toastr.info('Website update ready!', 'Update');
       updates.activateUpdate().then( () => document.location.reload());
+ 
   });
   }
 
@@ -44,7 +46,16 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
+      this.unifiedNotifications.init(false);
+      this.unifiedNotifications.currentMessage.subscribe(x => {
 
+          if(x) { 
+            // if(!this.isNative) {
+              console.log(x.notification.body, x.notification.title);
+
+          }
+ 
+    });
     });
   }
 }

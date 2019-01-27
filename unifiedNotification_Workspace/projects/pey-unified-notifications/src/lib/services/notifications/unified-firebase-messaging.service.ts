@@ -1,11 +1,12 @@
 import { Injectable, Inject } from '@angular/core';
 import { MobileFirebaseMessagingService } from './mobile-firebase-messaging.service';
 // import { WebFirebaseMessagingService } from './web-firebase-messaging.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject, observable } from 'rxjs';
 
 import { PlatformHelperService } from './../helpers/platform-helper.service';
 import { Platform } from '@ionic/angular';
 import { WebFirebaseMessagingService } from './web-firebase-messaging.service';
+import { takeWhile } from 'rxjs/operators';
 
 
 @Injectable({
@@ -13,25 +14,28 @@ import { WebFirebaseMessagingService } from './web-firebase-messaging.service';
 })
 export class UnifiedFirebaseMessagingService {
 
-  currentMessage = new BehaviorSubject(null);
+  // currentMessage = new Subject();
+  currentMessage =   new BehaviorSubject(null);
   token = new BehaviorSubject<string>(null);
   IsActive = false;
-
+  isAlive = true;
+  isNative: boolean;
   //  only relevant on ios
   permission = new BehaviorSubject(null);
 
   constructor(
     private mobileNotifications: MobileFirebaseMessagingService,
     private webNotifications: WebFirebaseMessagingService,
-    private platformHelper: PlatformHelperService,
+    // private platformHelper: PlatformHelperService,
     private platformService: Platform
 
-  ) {  
-    this.init();
+  ) {
   }
 
-  init() {
-    if (this.platformHelper.isNative) {
+  init(isNative: boolean) {
+    this.isNative = isNative;
+
+    if (isNative) {
       this.mobileNotifications.init();
       this.currentMessage = this.mobileNotifications.currentMessage;
       this.permission = this.mobileNotifications.permission;
@@ -46,14 +50,14 @@ export class UnifiedFirebaseMessagingService {
   }
 
   joinGroup(id: string) {
-    if(this.platformHelper.isNative) {
+    if(this.isNative) {
       this.mobileNotifications.joinGroup(id);
     } else {
       console.log('web topic/group subscriptions have to be resolved serverside');
     }
   }
   leaveGroup(id: string) {
-    if(this.platformHelper.isNative) {
+    if(this.isNative) {
       this.mobileNotifications.leaveGroup(id);
     } else {
       console.log('web topic/group subscriptions have to be resolved serverside');
@@ -61,7 +65,7 @@ export class UnifiedFirebaseMessagingService {
   }
 
   updatePermission() {
-    if(this.platformHelper.isNative) {
+    if(this.isNative) {
       this.mobileNotifications.updatePermission();
     } else {
       this.webNotifications.getToken();
@@ -69,7 +73,7 @@ export class UnifiedFirebaseMessagingService {
   }
   // only works on iOS other platforms dont need permissions
   hasPermission(): Promise<boolean> {
-    if(this.platformService.is('ios') && this.platformHelper.isNative) {
+    if(this.platformService.is('ios') && this.isNative) {
       return this.mobileNotifications.hasPermission()
         .then(res => { console.log(res);
           return res;

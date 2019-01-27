@@ -7,11 +7,12 @@ export declare class WebFirebaseMessagingService implements OnDestroy {
     token: BehaviorSubject<string>;
     currentMessage: BehaviorSubject<any>;
     isAlive: boolean;
+    isActive: boolean;
     constructor(angularFireMessaging: AngularFireMessaging);
     ngOnDestroy(): void;
     init(): void;
     updatePermission(): void;
-    getToken(): void;
+    getToken(): boolean;
     receiveMessage(): void;
     onTokenRefresh(): void;
 }

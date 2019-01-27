@@ -151,58 +151,6 @@ var MobileFirebaseMessagingService = /** @class */ (function () {
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-var PlatformHelperService = /** @class */ (function () {
-    function PlatformHelperService(platformService) {
-        this.platformService = platformService;
-    }
-    Object.defineProperty(PlatformHelperService.prototype, "isNative", {
-        get: /**
-         * @return {?}
-         */
-        function () {
-            //if http://local like in prod build & ios or android
-            // solution till platform.is('mobile') fixed
-            // return true;
-            // document.URL.startsWith('http://localhost:')
-            if (
-            // (document.URL.indexOf( 'http://localhost') !== -1) &&
-            // (document.URL.indexOf('localhost:8080') > -1 ) 
-            // document.URL.startsWith('http://localhost:8')
-            document.URL.startsWith('http://')
-                && (!(document.URL.startsWith('http://localhost:81')))
-            // || (environment.production == false && (
-            //     (window.hasOwnProperty('cordova')) &&
-            //     (this.platformService.is('ios') || this.platformService.is('android'))          
-            // ))
-            // (window.hasOwnProperty('cordova')) &&
-            // (this.platformService.is('ios') || this.platformService.is('android') )
-            ) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
-    PlatformHelperService.decorators = [
-        { type: Injectable, args: [{
-                    providedIn: 'root'
-                },] }
-    ];
-    /** @nocollapse */
-    PlatformHelperService.ctorParameters = function () { return [
-        { type: Platform }
-    ]; };
-    /** @nocollapse */ PlatformHelperService.ngInjectableDef = defineInjectable({ factory: function PlatformHelperService_Factory() { return new PlatformHelperService(inject(Platform$1)); }, token: PlatformHelperService, providedIn: "root" });
-    return PlatformHelperService;
-}());
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var WebFirebaseMessagingService = /** @class */ (function () {
     function WebFirebaseMessagingService(angularFireMessaging) {
         this.angularFireMessaging = angularFireMessaging;
@@ -210,6 +158,8 @@ var WebFirebaseMessagingService = /** @class */ (function () {
         this.token = new BehaviorSubject(null);
         this.currentMessage = new BehaviorSubject(null);
         this.isAlive = true;
+        this.isActive = false;
+        console.log('web');
     }
     /**
      * @return {?}
@@ -218,7 +168,9 @@ var WebFirebaseMessagingService = /** @class */ (function () {
      * @return {?}
      */
     function () {
+        console.log('webdead');
         this.isAlive = false;
+        this.isActive = false;
     };
     /**
      * @return {?}
@@ -227,7 +179,8 @@ var WebFirebaseMessagingService = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        this.angularFireMessaging.messaging.subscribe(function (_messaging) {
+        var _this = this;
+        this.angularFireMessaging.messaging.pipe(takeWhile(function () { return _this.isAlive; })).subscribe(function (_messaging) {
             _messaging.onMessage = _messaging.onMessage.bind(_messaging);
             _messaging.onTokenRefresh = _messaging.onTokenRefresh.bind(_messaging);
         });
@@ -263,6 +216,7 @@ var WebFirebaseMessagingService = /** @class */ (function () {
         }, function (err) {
             console.error('Unable to get permission to notify.', err);
         });
+        return true;
     };
     /**
      * @return {?}
@@ -310,26 +264,29 @@ var WebFirebaseMessagingService = /** @class */ (function () {
  * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var UnifiedFirebaseMessagingService = /** @class */ (function () {
-    function UnifiedFirebaseMessagingService(mobileNotifications, webNotifications, platformHelper, platformService) {
+    function UnifiedFirebaseMessagingService(mobileNotifications, webNotifications, platformService) {
         this.mobileNotifications = mobileNotifications;
         this.webNotifications = webNotifications;
-        this.platformHelper = platformHelper;
         this.platformService = platformService;
+        // currentMessage = new Subject();
         this.currentMessage = new BehaviorSubject(null);
         this.token = new BehaviorSubject(null);
         this.IsActive = false;
+        this.isAlive = true;
         //  only relevant on ios
         this.permission = new BehaviorSubject(null);
-        this.init();
     }
     /**
+     * @param {?} isNative
      * @return {?}
      */
     UnifiedFirebaseMessagingService.prototype.init = /**
+     * @param {?} isNative
      * @return {?}
      */
-    function () {
-        if (this.platformHelper.isNative) {
+    function (isNative) {
+        this.isNative = isNative;
+        if (isNative) {
             this.mobileNotifications.init();
             this.currentMessage = this.mobileNotifications.currentMessage;
             this.permission = this.mobileNotifications.permission;
@@ -352,7 +309,7 @@ var UnifiedFirebaseMessagingService = /** @class */ (function () {
      * @return {?}
      */
     function (id) {
-        if (this.platformHelper.isNative) {
+        if (this.isNative) {
             this.mobileNotifications.joinGroup(id);
         }
         else {
@@ -368,7 +325,7 @@ var UnifiedFirebaseMessagingService = /** @class */ (function () {
      * @return {?}
      */
     function (id) {
-        if (this.platformHelper.isNative) {
+        if (this.isNative) {
             this.mobileNotifications.leaveGroup(id);
         }
         else {
@@ -382,7 +339,7 @@ var UnifiedFirebaseMessagingService = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        if (this.platformHelper.isNative) {
+        if (this.isNative) {
             this.mobileNotifications.updatePermission();
         }
         else {
@@ -400,7 +357,7 @@ var UnifiedFirebaseMessagingService = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        if (this.platformService.is('ios') && this.platformHelper.isNative) {
+        if (this.platformService.is('ios') && this.isNative) {
             return this.mobileNotifications.hasPermission()
                 .then(function (res) {
                 console.log(res);
@@ -422,10 +379,9 @@ var UnifiedFirebaseMessagingService = /** @class */ (function () {
     UnifiedFirebaseMessagingService.ctorParameters = function () { return [
         { type: MobileFirebaseMessagingService },
         { type: WebFirebaseMessagingService },
-        { type: PlatformHelperService },
         { type: Platform }
     ]; };
-    /** @nocollapse */ UnifiedFirebaseMessagingService.ngInjectableDef = defineInjectable({ factory: function UnifiedFirebaseMessagingService_Factory() { return new UnifiedFirebaseMessagingService(inject(MobileFirebaseMessagingService), inject(WebFirebaseMessagingService), inject(PlatformHelperService), inject(Platform$1)); }, token: UnifiedFirebaseMessagingService, providedIn: "root" });
+    /** @nocollapse */ UnifiedFirebaseMessagingService.ngInjectableDef = defineInjectable({ factory: function UnifiedFirebaseMessagingService_Factory() { return new UnifiedFirebaseMessagingService(inject(MobileFirebaseMessagingService), inject(WebFirebaseMessagingService), inject(Platform$1)); }, token: UnifiedFirebaseMessagingService, providedIn: "root" });
     return UnifiedFirebaseMessagingService;
 }());
 
@@ -545,6 +501,6 @@ var PeyUnifiedNotificationsModule = /** @class */ (function () {
  * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { UnifiedFirebaseMessagingService, IosPushNotificationPermissiongGuard, PeyUnifiedNotificationsModule, PeyUnifiedNotificationsComponent as ɵd, PlatformHelperService as ɵc, MobileFirebaseMessagingService as ɵa, WebFirebaseMessagingService as ɵb };
+export { UnifiedFirebaseMessagingService, IosPushNotificationPermissiongGuard, PeyUnifiedNotificationsModule, PeyUnifiedNotificationsComponent as ɵc, MobileFirebaseMessagingService as ɵa, WebFirebaseMessagingService as ɵb };
 
 //# sourceMappingURL=pey-unified-notifications.js.map

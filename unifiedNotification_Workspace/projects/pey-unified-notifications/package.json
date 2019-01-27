@@ -1,13 +1,13 @@
 {
   "name": "pey-unified-notifications",
-  "version": "1.1.5",
+  "version": "1.2.1",
   "homepage": "https://github.com/peyter213/unifiedNotifications#readme",
   "license" : "GPL-3.0",
   "peerDependencies": {
     "@angular/common": "^7.1.0",
     "@angular/core": "^7.1.0",
     "cordova-plugin-firebase": "2.0.5",
-    "angularfire2": "^5.1.1",
+    "@angular/fire": "^5.1.1",
     "@ionic-native/firebase": "^5.0.0-beta.22",
     "firebase": "^5.7.1",
     "@ionic-native/dialogs": "^5.0.0-beta.22",

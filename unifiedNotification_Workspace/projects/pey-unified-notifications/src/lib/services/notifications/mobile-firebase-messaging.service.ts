@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 // declare var FirebasePlugin;
 import { Firebase } from '@ionic-native/firebase/ngx';

@@ -37,7 +37,7 @@ const messaging = firebase.messaging();
 ___________________END
 
 
-
+Init in app component if you want to use it global, else init in the component you are using it. Pass a value with .init depending if its native or web
 Example use for web:
 
 import { Component, OnInit } from '@angular/core';
@@ -51,14 +51,21 @@ import { UnifiedFirebaseMessagingService } from 'pey-unified-notifications';
 })
 export class AboutPage implements OnInit {
 
+
+  isAlive= true;
+
   constructor(private unifiedNotifications: UnifiedFirebaseMessagingService) { }
 
   ngOnInit() {
-    this.unifiedNotifications.token.subscribe(x => console.log(x));
-    this.unifiedNotifications.currentMessage.subscribe(x => console.log(x));
+    //init should be with injected value in app component to be dynamic
+    this.unifiedNotifications.init(false);
+    this.unifiedNotifications.token.pipe(takeWhile(()=> this.isAlive)).subscribe(x => console.log(x));
+    this.unifiedNotifications.currentMessage.pipe(takeWhile(()=> this.isAlive)).subscribe(x => console.log(x));
+  }
+  ngOnDestroy() { console.log('aaa');
+    this.isAlive = false;
   }
   request() {
     this.unifiedNotifications.updatePermission();
   }
-
 }
