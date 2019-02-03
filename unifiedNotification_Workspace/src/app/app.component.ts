@@ -30,12 +30,10 @@ export class AppComponent {
     private unifiedNotifications: UnifiedFirebaseMessagingService,
     private statusBar: StatusBar,
     updates: SwUpdate
-    // private unifiedNotifications: UnifiedFirebaseMessagingService
   ) {
     this.initializeApp();
 
     updates.available.subscribe(event => {
-      // toastr.info('Website update ready!', 'Update');
       updates.activateUpdate().then( () => document.location.reload());
  
   });
@@ -48,13 +46,9 @@ export class AppComponent {
 
       this.unifiedNotifications.init(false);
       this.unifiedNotifications.currentMessage.subscribe(x => {
-
           if(x) { 
-            // if(!this.isNative) {
               console.log(x.notification.body, x.notification.title);
-
           }
- 
     });
     });
   }

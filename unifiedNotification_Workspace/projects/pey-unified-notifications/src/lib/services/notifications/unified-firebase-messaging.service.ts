@@ -14,8 +14,7 @@ import { takeWhile } from 'rxjs/operators';
 })
 export class UnifiedFirebaseMessagingService {
 
-  // currentMessage = new Subject();
-  currentMessage =   new BehaviorSubject(null);
+  currentMessage = new BehaviorSubject(null);
   token = new BehaviorSubject<string>(null);
   IsActive = false;
   isAlive = true;
@@ -26,7 +25,6 @@ export class UnifiedFirebaseMessagingService {
   constructor(
     private mobileNotifications: MobileFirebaseMessagingService,
     private webNotifications: WebFirebaseMessagingService,
-    // private platformHelper: PlatformHelperService,
     private platformService: Platform
 
   ) {
@@ -50,14 +48,14 @@ export class UnifiedFirebaseMessagingService {
   }
 
   joinGroup(id: string) {
-    if(this.isNative) {
+    if (this.isNative) {
       this.mobileNotifications.joinGroup(id);
     } else {
       console.log('web topic/group subscriptions have to be resolved serverside');
     }
   }
   leaveGroup(id: string) {
-    if(this.isNative) {
+    if (this.isNative) {
       this.mobileNotifications.leaveGroup(id);
     } else {
       console.log('web topic/group subscriptions have to be resolved serverside');
@@ -65,7 +63,7 @@ export class UnifiedFirebaseMessagingService {
   }
 
   updatePermission() {
-    if(this.isNative) {
+    if (this.isNative) {
       this.mobileNotifications.updatePermission();
     } else {
       this.webNotifications.getToken();
@@ -73,9 +71,10 @@ export class UnifiedFirebaseMessagingService {
   }
   // only works on iOS other platforms dont need permissions
   hasPermission(): Promise<boolean> {
-    if(this.platformService.is('ios') && this.isNative) {
+    if (this.platformService.is('ios') && this.isNative) {
       return this.mobileNotifications.hasPermission()
-        .then(res => { console.log(res);
+        .then(res => {
+          console.log(res);
           return res;
         });
     } {

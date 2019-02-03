@@ -117,8 +117,6 @@ var MobileFirebaseMessagingService = /** @class */ (function () {
             .catch(function (err) { return console.log(err); });
         this.firebase.hasPermission()
             .then(function (perm) {
-            console.log('permission');
-            console.log(perm);
         })
             .catch(function (err) { return console.log(err); });
     };
@@ -268,7 +266,6 @@ var UnifiedFirebaseMessagingService = /** @class */ (function () {
         this.mobileNotifications = mobileNotifications;
         this.webNotifications = webNotifications;
         this.platformService = platformService;
-        // currentMessage = new Subject();
         this.currentMessage = new BehaviorSubject(null);
         this.token = new BehaviorSubject(null);
         this.IsActive = false;

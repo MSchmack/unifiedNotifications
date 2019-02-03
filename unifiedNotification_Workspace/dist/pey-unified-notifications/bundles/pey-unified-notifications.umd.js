@@ -112,8 +112,6 @@
                     .catch(function (err) { return console.log(err); });
                 this.firebase.hasPermission()
                     .then(function (perm) {
-                    console.log('permission');
-                    console.log(perm);
                 })
                     .catch(function (err) { return console.log(err); });
             };
@@ -267,7 +265,6 @@
             this.mobileNotifications = mobileNotifications;
             this.webNotifications = webNotifications;
             this.platformService = platformService;
-            // currentMessage = new Subject();
             this.currentMessage = new rxjs.BehaviorSubject(null);
             this.token = new rxjs.BehaviorSubject(null);
             this.IsActive = false;

@@ -94,8 +94,6 @@ class MobileFirebaseMessagingService {
             .catch(err => console.log(err));
         this.firebase.hasPermission()
             .then(perm => {
-            console.log('permission');
-            console.log(perm);
         })
             .catch(err => console.log(err));
     }
@@ -223,7 +221,6 @@ class UnifiedFirebaseMessagingService {
         this.mobileNotifications = mobileNotifications;
         this.webNotifications = webNotifications;
         this.platformService = platformService;
-        // currentMessage = new Subject();
         this.currentMessage = new BehaviorSubject(null);
         this.token = new BehaviorSubject(null);
         this.IsActive = false;
