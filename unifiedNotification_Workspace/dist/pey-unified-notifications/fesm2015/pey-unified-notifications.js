@@ -3,7 +3,6 @@ import { AngularFireMessaging } from '@angular/fire/messaging';
 import { takeWhile } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { Platform } from '@ionic/angular';
-import { Platform as Platform$1 } from '@ionic/angular/dist/providers/platform';
 import { Dialogs as Dialogs$1 } from '@ionic-native/dialogs/ngx/index';
 import { Injectable, Component, NgModule, defineInjectable, inject } from '@angular/core';
 import { Dialogs } from '@ionic-native/dialogs/ngx';
@@ -11,7 +10,7 @@ import { Firebase } from '@ionic-native/firebase/ngx';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class MobileFirebaseMessagingService {
     /**
@@ -42,30 +41,52 @@ class MobileFirebaseMessagingService {
      */
     getToken() {
         this.firebase.getToken()
-            .then(token => {
+            .then((/**
+         * @param {?} token
+         * @return {?}
+         */
+        token => {
             this.token.next(token);
-        })
-            .catch(err => console.log(err));
+        }))
+            .catch((/**
+         * @param {?} err
+         * @return {?}
+         */
+        err => console.log(err)));
         this.firebase.onTokenRefresh()
-            .pipe(takeWhile(() => this.isAlive))
-            .subscribe(x => {
+            .pipe(takeWhile((/**
+         * @return {?}
+         */
+        () => this.isAlive)))
+            .subscribe((/**
+         * @param {?} x
+         * @return {?}
+         */
+        x => {
             //posts on update
             if (x) {
                 if (x !== this.token) {
                     this.token.next(x);
                 }
             }
-        });
+        }));
     }
     /**
      * @return {?}
      */
     initNotifications() {
         this.firebase.onNotificationOpen()
-            .pipe(takeWhile(() => this.isAlive))
-            .subscribe(notification => {
+            .pipe(takeWhile((/**
+         * @return {?}
+         */
+        () => this.isAlive)))
+            .subscribe((/**
+         * @param {?} notification
+         * @return {?}
+         */
+        notification => {
             this.currentMessage.next(notification);
-        });
+        }));
     }
     /**
      * @param {?} id
@@ -88,23 +109,43 @@ class MobileFirebaseMessagingService {
      */
     updatePermission() {
         this.firebase.grantPermission()
-            .then(permission => {
+            .then((/**
+         * @param {?} permission
+         * @return {?}
+         */
+        permission => {
             this.permission.next(permission);
-        })
-            .catch(err => console.log(err));
+        }))
+            .catch((/**
+         * @param {?} err
+         * @return {?}
+         */
+        err => console.log(err)));
         this.firebase.hasPermission()
-            .then(perm => {
-        })
-            .catch(err => console.log(err));
+            .then((/**
+         * @param {?} perm
+         * @return {?}
+         */
+        perm => {
+        }))
+            .catch((/**
+         * @param {?} err
+         * @return {?}
+         */
+        err => console.log(err)));
     }
     /**
      * @return {?}
      */
     hasPermission() {
         return this.firebase.hasPermission()
-            .then(perm => {
+            .then((/**
+         * @param {?} perm
+         * @return {?}
+         */
+        perm => {
             return perm.isEnabled;
-        });
+        }));
     }
 }
 MobileFirebaseMessagingService.decorators = [
@@ -120,7 +161,7 @@ MobileFirebaseMessagingService.ctorParameters = () => [
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class WebFirebaseMessagingService {
     /**
@@ -147,10 +188,17 @@ class WebFirebaseMessagingService {
      * @return {?}
      */
     init() {
-        this.angularFireMessaging.messaging.pipe(takeWhile(() => this.isAlive)).subscribe((_messaging) => {
+        this.angularFireMessaging.messaging.pipe(takeWhile((/**
+         * @return {?}
+         */
+        () => this.isAlive))).subscribe((/**
+         * @param {?} _messaging
+         * @return {?}
+         */
+        (_messaging) => {
             _messaging.onMessage = _messaging.onMessage.bind(_messaging);
             _messaging.onTokenRefresh = _messaging.onTokenRefresh.bind(_messaging);
-        });
+        }));
         // this.getToken();
         this.receiveMessage();
     }
@@ -166,13 +214,24 @@ class WebFirebaseMessagingService {
      */
     getToken() {
         this.angularFireMessaging.requestToken
-            .pipe(takeWhile(() => this.isAlive))
-            .subscribe((token) => {
+            .pipe(takeWhile((/**
+         * @return {?}
+         */
+        () => this.isAlive)))
+            .subscribe((/**
+         * @param {?} token
+         * @return {?}
+         */
+        (token) => {
             this.token.next(token);
             this.permission.next(true);
-        }, (err) => {
+        }), (/**
+         * @param {?} err
+         * @return {?}
+         */
+        (err) => {
             console.error('Unable to get permission to notify.', err);
-        });
+        }));
         return true;
     }
     /**
@@ -180,20 +239,34 @@ class WebFirebaseMessagingService {
      */
     receiveMessage() {
         this.angularFireMessaging.messages
-            .pipe(takeWhile(() => this.isAlive))
-            .subscribe((payload) => {
+            .pipe(takeWhile((/**
+         * @return {?}
+         */
+        () => this.isAlive)))
+            .subscribe((/**
+         * @param {?} payload
+         * @return {?}
+         */
+        (payload) => {
             this.currentMessage.next(payload);
-        });
+        }));
     }
     /**
      * @return {?}
      */
     onTokenRefresh() {
         this.angularFireMessaging.tokenChanges
-            .pipe(takeWhile(() => this.isAlive))
-            .subscribe(token => {
+            .pipe(takeWhile((/**
+         * @return {?}
+         */
+        () => this.isAlive)))
+            .subscribe((/**
+         * @param {?} token
+         * @return {?}
+         */
+        token => {
             this.token.next(token);
-        });
+        }));
     }
 }
 WebFirebaseMessagingService.decorators = [
@@ -209,7 +282,7 @@ WebFirebaseMessagingService.ctorParameters = () => [
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class UnifiedFirebaseMessagingService {
     /**
@@ -290,15 +363,22 @@ class UnifiedFirebaseMessagingService {
     hasPermission() {
         if (this.platformService.is('ios') && this.isNative) {
             return this.mobileNotifications.hasPermission()
-                .then(res => {
+                .then((/**
+             * @param {?} res
+             * @return {?}
+             */
+            res => {
                 console.log(res);
                 return res;
-            });
+            }));
         }
         {
-            return new Promise(() => {
+            return new Promise((/**
+             * @return {?}
+             */
+            () => {
                 return true;
-            });
+            }));
         }
     }
 }
@@ -313,11 +393,11 @@ UnifiedFirebaseMessagingService.ctorParameters = () => [
     { type: WebFirebaseMessagingService },
     { type: Platform }
 ];
-/** @nocollapse */ UnifiedFirebaseMessagingService.ngInjectableDef = defineInjectable({ factory: function UnifiedFirebaseMessagingService_Factory() { return new UnifiedFirebaseMessagingService(inject(MobileFirebaseMessagingService), inject(WebFirebaseMessagingService), inject(Platform$1)); }, token: UnifiedFirebaseMessagingService, providedIn: "root" });
+/** @nocollapse */ UnifiedFirebaseMessagingService.ngInjectableDef = defineInjectable({ factory: function UnifiedFirebaseMessagingService_Factory() { return new UnifiedFirebaseMessagingService(inject(MobileFirebaseMessagingService), inject(WebFirebaseMessagingService), inject(Platform)); }, token: UnifiedFirebaseMessagingService, providedIn: "root" });
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class IosPushNotificationPermissiongGuard {
     /**
@@ -339,22 +419,33 @@ class IosPushNotificationPermissiongGuard {
         if (!this.platformService.is('ios')) {
             return true;
         }
-        return this.unifiedNotificationService.hasPermission().then(res => {
+        return this.unifiedNotificationService.hasPermission().then((/**
+         * @param {?} res
+         * @return {?}
+         */
+        res => {
             if (res) {
                 return true;
             }
             else {
                 return this.dialogs.alert('This app requires push notifications to work as intended.\nYou can turn them silent any time you want.', 'Important')
-                    .then(() => {
+                    .then((/**
+                 * @return {?}
+                 */
+                () => {
                     this.unifiedNotificationService.updatePermission();
                     return true;
-                })
-                    .catch(e => {
+                }))
+                    .catch((/**
+                 * @param {?} e
+                 * @return {?}
+                 */
+                e => {
                     console.log(e);
                     return true;
-                });
+                }));
             }
-        });
+        }));
         return false;
     }
 }
@@ -369,11 +460,11 @@ IosPushNotificationPermissiongGuard.ctorParameters = () => [
     { type: Dialogs },
     { type: UnifiedFirebaseMessagingService }
 ];
-/** @nocollapse */ IosPushNotificationPermissiongGuard.ngInjectableDef = defineInjectable({ factory: function IosPushNotificationPermissiongGuard_Factory() { return new IosPushNotificationPermissiongGuard(inject(Platform$1), inject(Dialogs$1), inject(UnifiedFirebaseMessagingService)); }, token: IosPushNotificationPermissiongGuard, providedIn: "root" });
+/** @nocollapse */ IosPushNotificationPermissiongGuard.ngInjectableDef = defineInjectable({ factory: function IosPushNotificationPermissiongGuard_Factory() { return new IosPushNotificationPermissiongGuard(inject(Platform), inject(Dialogs$1), inject(UnifiedFirebaseMessagingService)); }, token: IosPushNotificationPermissiongGuard, providedIn: "root" });
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 // import { Dialogs } from '@ionic-native/dialogs/ngx';
 class PeyUnifiedNotificationsComponent {
@@ -399,7 +490,7 @@ PeyUnifiedNotificationsComponent.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class PeyUnifiedNotificationsModule {
 }
@@ -417,12 +508,12 @@ PeyUnifiedNotificationsModule.decorators = [
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 export { UnifiedFirebaseMessagingService, IosPushNotificationPermissiongGuard, PeyUnifiedNotificationsModule, PeyUnifiedNotificationsComponent as ɵc, MobileFirebaseMessagingService as ɵa, WebFirebaseMessagingService as ɵb };

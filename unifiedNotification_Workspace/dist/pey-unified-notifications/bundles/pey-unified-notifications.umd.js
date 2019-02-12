@@ -1,12 +1,12 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ionic-native/firebase/ngx/index'), require('@angular/fire/messaging'), require('rxjs/operators'), require('rxjs'), require('@ionic/angular'), require('@ionic/angular/dist/providers/platform'), require('@ionic-native/dialogs/ngx/index'), require('@angular/core'), require('@ionic-native/dialogs/ngx'), require('@ionic-native/firebase/ngx')) :
-    typeof define === 'function' && define.amd ? define('pey-unified-notifications', ['exports', '@ionic-native/firebase/ngx/index', '@angular/fire/messaging', 'rxjs/operators', 'rxjs', '@ionic/angular', '@ionic/angular/dist/providers/platform', '@ionic-native/dialogs/ngx/index', '@angular/core', '@ionic-native/dialogs/ngx', '@ionic-native/firebase/ngx'], factory) :
-    (factory((global['pey-unified-notifications'] = {}),global.i1,global.ng.fire.messaging,global.rxjs.operators,global.rxjs,global.angular,global.i1$2,global.i2,global.ng.core,global.ngx,global.ngx$1));
-}(this, (function (exports,i1,i1$1,operators,rxjs,angular,i1$2,i2,i0,ngx,ngx$1) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ionic-native/firebase/ngx/index'), require('@angular/fire/messaging'), require('rxjs/operators'), require('rxjs'), require('@ionic/angular'), require('@ionic-native/dialogs/ngx/index'), require('@angular/core'), require('@ionic-native/dialogs/ngx'), require('@ionic-native/firebase/ngx')) :
+    typeof define === 'function' && define.amd ? define('pey-unified-notifications', ['exports', '@ionic-native/firebase/ngx/index', '@angular/fire/messaging', 'rxjs/operators', 'rxjs', '@ionic/angular', '@ionic-native/dialogs/ngx/index', '@angular/core', '@ionic-native/dialogs/ngx', '@ionic-native/firebase/ngx'], factory) :
+    (factory((global['pey-unified-notifications'] = {}),global.i1,global.ng.fire.messaging,global.rxjs.operators,global.rxjs,global.i3,global.i2,global.ng.core,global.ngx,global.ngx$1));
+}(this, (function (exports,i1,i1$1,operators,rxjs,i3,i2,i0,ngx,ngx$1) { 'use strict';
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var MobileFirebaseMessagingService = /** @class */ (function () {
         function MobileFirebaseMessagingService(firebase) {
@@ -44,20 +44,31 @@
             function () {
                 var _this = this;
                 this.firebase.getToken()
-                    .then(function (token) {
+                    .then(( /**
+             * @param {?} token
+             * @return {?}
+             */function (token) {
                     _this.token.next(token);
-                })
-                    .catch(function (err) { return console.log(err); });
+                }))
+                    .catch(( /**
+             * @param {?} err
+             * @return {?}
+             */function (err) { return console.log(err); }));
                 this.firebase.onTokenRefresh()
-                    .pipe(operators.takeWhile(function () { return _this.isAlive; }))
-                    .subscribe(function (x) {
+                    .pipe(operators.takeWhile(( /**
+             * @return {?}
+             */function () { return _this.isAlive; })))
+                    .subscribe(( /**
+             * @param {?} x
+             * @return {?}
+             */function (x) {
                     //posts on update
                     if (x) {
                         if (x !== _this.token) {
                             _this.token.next(x);
                         }
                     }
-                });
+                }));
             };
         /**
          * @return {?}
@@ -68,10 +79,15 @@
             function () {
                 var _this = this;
                 this.firebase.onNotificationOpen()
-                    .pipe(operators.takeWhile(function () { return _this.isAlive; }))
-                    .subscribe(function (notification) {
+                    .pipe(operators.takeWhile(( /**
+             * @return {?}
+             */function () { return _this.isAlive; })))
+                    .subscribe(( /**
+             * @param {?} notification
+             * @return {?}
+             */function (notification) {
                     _this.currentMessage.next(notification);
-                });
+                }));
             };
         /**
          * @param {?} id
@@ -106,14 +122,26 @@
             function () {
                 var _this = this;
                 this.firebase.grantPermission()
-                    .then(function (permission) {
+                    .then(( /**
+             * @param {?} permission
+             * @return {?}
+             */function (permission) {
                     _this.permission.next(permission);
-                })
-                    .catch(function (err) { return console.log(err); });
+                }))
+                    .catch(( /**
+             * @param {?} err
+             * @return {?}
+             */function (err) { return console.log(err); }));
                 this.firebase.hasPermission()
-                    .then(function (perm) {
-                })
-                    .catch(function (err) { return console.log(err); });
+                    .then(( /**
+             * @param {?} perm
+             * @return {?}
+             */function (perm) {
+                }))
+                    .catch(( /**
+             * @param {?} err
+             * @return {?}
+             */function (err) { return console.log(err); }));
             };
         /**
          * @return {?}
@@ -123,9 +151,12 @@
          */
             function () {
                 return this.firebase.hasPermission()
-                    .then(function (perm) {
+                    .then(( /**
+             * @param {?} perm
+             * @return {?}
+             */function (perm) {
                     return perm.isEnabled;
-                });
+                }));
             };
         MobileFirebaseMessagingService.decorators = [
             { type: i0.Injectable, args: [{
@@ -144,7 +175,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var WebFirebaseMessagingService = /** @class */ (function () {
         function WebFirebaseMessagingService(angularFireMessaging) {
@@ -175,10 +206,15 @@
          */
             function () {
                 var _this = this;
-                this.angularFireMessaging.messaging.pipe(operators.takeWhile(function () { return _this.isAlive; })).subscribe(function (_messaging) {
+                this.angularFireMessaging.messaging.pipe(operators.takeWhile(( /**
+                 * @return {?}
+                 */function () { return _this.isAlive; }))).subscribe(( /**
+                 * @param {?} _messaging
+                 * @return {?}
+                 */function (_messaging) {
                     _messaging.onMessage = _messaging.onMessage.bind(_messaging);
                     _messaging.onTokenRefresh = _messaging.onTokenRefresh.bind(_messaging);
-                });
+                }));
                 // this.getToken();
                 this.receiveMessage();
             };
@@ -204,13 +240,21 @@
             function () {
                 var _this = this;
                 this.angularFireMessaging.requestToken
-                    .pipe(operators.takeWhile(function () { return _this.isAlive; }))
-                    .subscribe(function (token) {
+                    .pipe(operators.takeWhile(( /**
+             * @return {?}
+             */function () { return _this.isAlive; })))
+                    .subscribe(( /**
+             * @param {?} token
+             * @return {?}
+             */function (token) {
                     _this.token.next(token);
                     _this.permission.next(true);
-                }, function (err) {
+                }), ( /**
+                 * @param {?} err
+                 * @return {?}
+                 */function (err) {
                     console.error('Unable to get permission to notify.', err);
-                });
+                }));
                 return true;
             };
         /**
@@ -222,10 +266,15 @@
             function () {
                 var _this = this;
                 this.angularFireMessaging.messages
-                    .pipe(operators.takeWhile(function () { return _this.isAlive; }))
-                    .subscribe(function (payload) {
+                    .pipe(operators.takeWhile(( /**
+             * @return {?}
+             */function () { return _this.isAlive; })))
+                    .subscribe(( /**
+             * @param {?} payload
+             * @return {?}
+             */function (payload) {
                     _this.currentMessage.next(payload);
-                });
+                }));
             };
         /**
          * @return {?}
@@ -236,10 +285,15 @@
             function () {
                 var _this = this;
                 this.angularFireMessaging.tokenChanges
-                    .pipe(operators.takeWhile(function () { return _this.isAlive; }))
-                    .subscribe(function (token) {
+                    .pipe(operators.takeWhile(( /**
+             * @return {?}
+             */function () { return _this.isAlive; })))
+                    .subscribe(( /**
+             * @param {?} token
+             * @return {?}
+             */function (token) {
                     _this.token.next(token);
-                });
+                }));
             };
         WebFirebaseMessagingService.decorators = [
             { type: i0.Injectable, args: [{
@@ -258,7 +312,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var UnifiedFirebaseMessagingService = /** @class */ (function () {
         function UnifiedFirebaseMessagingService(mobileNotifications, webNotifications, platformService) {
@@ -355,15 +409,20 @@
             function () {
                 if (this.platformService.is('ios') && this.isNative) {
                     return this.mobileNotifications.hasPermission()
-                        .then(function (res) {
+                        .then(( /**
+                 * @param {?} res
+                 * @return {?}
+                 */function (res) {
                         console.log(res);
                         return res;
-                    });
+                    }));
                 }
                 {
-                    return new Promise(function () {
+                    return new Promise(( /**
+                     * @return {?}
+                     */function () {
                         return true;
-                    });
+                    }));
                 }
             };
         UnifiedFirebaseMessagingService.decorators = [
@@ -376,16 +435,16 @@
             return [
                 { type: MobileFirebaseMessagingService },
                 { type: WebFirebaseMessagingService },
-                { type: angular.Platform }
+                { type: i3.Platform }
             ];
         };
-        /** @nocollapse */ UnifiedFirebaseMessagingService.ngInjectableDef = i0.defineInjectable({ factory: function UnifiedFirebaseMessagingService_Factory() { return new UnifiedFirebaseMessagingService(i0.inject(MobileFirebaseMessagingService), i0.inject(WebFirebaseMessagingService), i0.inject(i1$2.Platform)); }, token: UnifiedFirebaseMessagingService, providedIn: "root" });
+        /** @nocollapse */ UnifiedFirebaseMessagingService.ngInjectableDef = i0.defineInjectable({ factory: function UnifiedFirebaseMessagingService_Factory() { return new UnifiedFirebaseMessagingService(i0.inject(MobileFirebaseMessagingService), i0.inject(WebFirebaseMessagingService), i0.inject(i3.Platform)); }, token: UnifiedFirebaseMessagingService, providedIn: "root" });
         return UnifiedFirebaseMessagingService;
     }());
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var IosPushNotificationPermissiongGuard = /** @class */ (function () {
         function IosPushNotificationPermissiongGuard(platformService, dialogs, unifiedNotificationService) {
@@ -408,22 +467,30 @@
                 if (!this.platformService.is('ios')) {
                     return true;
                 }
-                return this.unifiedNotificationService.hasPermission().then(function (res) {
+                return this.unifiedNotificationService.hasPermission().then(( /**
+                 * @param {?} res
+                 * @return {?}
+                 */function (res) {
                     if (res) {
                         return true;
                     }
                     else {
                         return _this.dialogs.alert('This app requires push notifications to work as intended.\nYou can turn them silent any time you want.', 'Important')
-                            .then(function () {
+                            .then(( /**
+                     * @return {?}
+                     */function () {
                             _this.unifiedNotificationService.updatePermission();
                             return true;
-                        })
-                            .catch(function (e) {
+                        }))
+                            .catch(( /**
+                     * @param {?} e
+                     * @return {?}
+                     */function (e) {
                             console.log(e);
                             return true;
-                        });
+                        }));
                     }
-                });
+                }));
                 return false;
             };
         IosPushNotificationPermissiongGuard.decorators = [
@@ -434,18 +501,18 @@
         /** @nocollapse */
         IosPushNotificationPermissiongGuard.ctorParameters = function () {
             return [
-                { type: angular.Platform },
+                { type: i3.Platform },
                 { type: ngx.Dialogs },
                 { type: UnifiedFirebaseMessagingService }
             ];
         };
-        /** @nocollapse */ IosPushNotificationPermissiongGuard.ngInjectableDef = i0.defineInjectable({ factory: function IosPushNotificationPermissiongGuard_Factory() { return new IosPushNotificationPermissiongGuard(i0.inject(i1$2.Platform), i0.inject(i2.Dialogs), i0.inject(UnifiedFirebaseMessagingService)); }, token: IosPushNotificationPermissiongGuard, providedIn: "root" });
+        /** @nocollapse */ IosPushNotificationPermissiongGuard.ngInjectableDef = i0.defineInjectable({ factory: function IosPushNotificationPermissiongGuard_Factory() { return new IosPushNotificationPermissiongGuard(i0.inject(i3.Platform), i0.inject(i2.Dialogs), i0.inject(UnifiedFirebaseMessagingService)); }, token: IosPushNotificationPermissiongGuard, providedIn: "root" });
         return IosPushNotificationPermissiongGuard;
     }());
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     // import { Dialogs } from '@ionic-native/dialogs/ngx';
     var PeyUnifiedNotificationsComponent = /** @class */ (function () {
@@ -472,7 +539,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var PeyUnifiedNotificationsModule = /** @class */ (function () {
         function PeyUnifiedNotificationsModule() {
@@ -493,12 +560,12 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
 
     exports.UnifiedFirebaseMessagingService = UnifiedFirebaseMessagingService;
