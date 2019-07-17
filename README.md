@@ -1,5 +1,7 @@
 # unifiedNotifications
 
+Deprecated. Still functional but currently unsupported. If someone wants to takeover the package maintenance send a pm or email.
+
 
 Demo on github and below
 

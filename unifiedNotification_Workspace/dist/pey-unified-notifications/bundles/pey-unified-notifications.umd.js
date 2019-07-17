@@ -1,8 +1,8 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ionic-native/firebase/ngx/index'), require('@angular/fire/messaging'), require('rxjs/operators'), require('rxjs'), require('@ionic/angular'), require('@ionic-native/dialogs/ngx/index'), require('@angular/core'), require('@ionic-native/dialogs/ngx'), require('@ionic-native/firebase/ngx')) :
     typeof define === 'function' && define.amd ? define('pey-unified-notifications', ['exports', '@ionic-native/firebase/ngx/index', '@angular/fire/messaging', 'rxjs/operators', 'rxjs', '@ionic/angular', '@ionic-native/dialogs/ngx/index', '@angular/core', '@ionic-native/dialogs/ngx', '@ionic-native/firebase/ngx'], factory) :
-    (factory((global['pey-unified-notifications'] = {}),global.i1,global.ng.fire.messaging,global.rxjs.operators,global.rxjs,global.i3,global.i2,global.ng.core,global.ngx,global.ngx$1));
-}(this, (function (exports,i1,i1$1,operators,rxjs,i3,i2,i0,ngx,ngx$1) { 'use strict';
+    (factory((global['pey-unified-notifications'] = {}),global.i1,global.ng.fire.messaging,global.rxjs.operators,global.rxjs,global.i1$2,global.i2,global.ng.core,global.ngx,global.ngx$1));
+}(this, (function (exports,i1,i1$1,operators,rxjs,i1$2,i2,i0,ngx,ngx$1) { 'use strict';
 
     /**
      * @fileoverview added by tsickle
@@ -435,10 +435,10 @@
             return [
                 { type: MobileFirebaseMessagingService },
                 { type: WebFirebaseMessagingService },
-                { type: i3.Platform }
+                { type: i1$2.Platform }
             ];
         };
-        /** @nocollapse */ UnifiedFirebaseMessagingService.ngInjectableDef = i0.defineInjectable({ factory: function UnifiedFirebaseMessagingService_Factory() { return new UnifiedFirebaseMessagingService(i0.inject(MobileFirebaseMessagingService), i0.inject(WebFirebaseMessagingService), i0.inject(i3.Platform)); }, token: UnifiedFirebaseMessagingService, providedIn: "root" });
+        /** @nocollapse */ UnifiedFirebaseMessagingService.ngInjectableDef = i0.defineInjectable({ factory: function UnifiedFirebaseMessagingService_Factory() { return new UnifiedFirebaseMessagingService(i0.inject(MobileFirebaseMessagingService), i0.inject(WebFirebaseMessagingService), i0.inject(i1$2.Platform)); }, token: UnifiedFirebaseMessagingService, providedIn: "root" });
         return UnifiedFirebaseMessagingService;
     }());
 
@@ -501,12 +501,12 @@
         /** @nocollapse */
         IosPushNotificationPermissiongGuard.ctorParameters = function () {
             return [
-                { type: i3.Platform },
+                { type: i1$2.Platform },
                 { type: ngx.Dialogs },
                 { type: UnifiedFirebaseMessagingService }
             ];
         };
-        /** @nocollapse */ IosPushNotificationPermissiongGuard.ngInjectableDef = i0.defineInjectable({ factory: function IosPushNotificationPermissiongGuard_Factory() { return new IosPushNotificationPermissiongGuard(i0.inject(i3.Platform), i0.inject(i2.Dialogs), i0.inject(UnifiedFirebaseMessagingService)); }, token: IosPushNotificationPermissiongGuard, providedIn: "root" });
+        /** @nocollapse */ IosPushNotificationPermissiongGuard.ngInjectableDef = i0.defineInjectable({ factory: function IosPushNotificationPermissiongGuard_Factory() { return new IosPushNotificationPermissiongGuard(i0.inject(i1$2.Platform), i0.inject(i2.Dialogs), i0.inject(UnifiedFirebaseMessagingService)); }, token: IosPushNotificationPermissiongGuard, providedIn: "root" });
         return IosPushNotificationPermissiongGuard;
     }());
 
